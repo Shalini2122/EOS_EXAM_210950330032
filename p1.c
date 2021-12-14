@@ -32,10 +32,12 @@ int main(int argc,char const *argv[])
         if((strcmp(&str[i],&cmp1)==0)||(strcmp(&str[i],&cmp2)==0))
         {
             count++;
-            write(fdr,str[i],strlen(str));
+            write(fd1[1],str[i],strlen(str)+1);
         }
         }
     }
+    close (fd1[1]);
+    close (fd2[1]);
     close(fdr);
     }
     return 0;
