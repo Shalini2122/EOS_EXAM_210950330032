@@ -10,8 +10,15 @@
 
 int main(int argc,char const *argv[])
 {
-    int fdr,i,count=0;
+    int fdr,i,count=0,fd1[2],fd2[2];
     char str[100],cmp1="m",cmp2="M";
+    pipe(fd1);
+    pipe(fd2);
+    pid_t id;
+    if=fork();
+    if(0==id)
+    {
+        close(fd1[1]);
     fdr=open("dictionary.txt",O_WRONLY);
     if(-1==fdr)
     {
@@ -30,5 +37,6 @@ int main(int argc,char const *argv[])
         }
     }
     close(fdr);
+    }
     return 0;
 }
